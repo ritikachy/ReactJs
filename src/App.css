@@ -30,3 +30,13 @@
   border-radius: 8px;
   margin: 10px 0;
 }
+
+/* App.css */
+.ant-menu-item:hover .signout-item {
+  color: red; /* Change text color to red on hover */
+}
+
+/* Optional: Change background color on hover */
+.ant-menu-item:hover {
+  background-color: rgba(255, 0, 0, 0.1); /* Light red background on hover */
+}
