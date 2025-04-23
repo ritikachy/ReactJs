@@ -87,9 +87,10 @@ function App() {
 export default App;*/
 
 import React from 'react';
-import Logout from './pages/Logout';
+
 import Login from './pages/Login';
-import Product from './pages/Product'; 
+ 
+import Product from './pages/product';
 
 import { Menu } from 'antd';
 import { Routes, Route, useNavigate } from 'react-router-dom';
