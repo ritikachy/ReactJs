@@ -94,9 +94,11 @@ import {
   DashboardOutlined,
   HomeOutlined,
   PoweroffOutlined,
+  ProductOutlined,
   UnorderedListOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+
 
 function App() {
   const navigate= useNavigate()
@@ -106,9 +108,12 @@ function App() {
         <Menu
         onClick={({key})=>{
           if(key === "singout"){
+            Logout();//logout
+            navigate("/login"); //redirect to login page
+          
 
           }else{
-            navigate(key);
+            navigate(`/${key.toLowerCase()}`); // 👈 lowercase to match your routes
           }
 
           }}
@@ -118,6 +123,7 @@ function App() {
             { key: "Userlist", label: "User  List", icon: <UnorderedListOutlined /> },
             { key: "profile", label: "Profile", icon: <UserOutlined /> },
             { key: "Singout", label: "Signout", icon: <PoweroffOutlined /> },
+            { key: "product", label: "product", icon: <ProductOutlined /> },
           ]}
           ></Menu>
         
@@ -136,6 +142,9 @@ function Content() {
         <Route path="/user-list" element={<div>User List Content</div>} />
         <Route path="/profile" element={<div>Profile Content</div>} />
         <Route path="/signout" element={<div>Signout Content</div>} />
+        <Route path="/product" element={<div>Product Content</div>}/>
+        <Route path="/login" element={<Login />} />
+
       </Routes>
     </div>
   );
