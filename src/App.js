@@ -87,6 +87,9 @@ function App() {
 export default App;*/
 
 import React from 'react';
+import Logout from './pages/Logout';
+import Login from './pages/Login';
+
 import { Menu } from 'antd';
 import { Routes, Route,useNavigate } from 'react-router-dom'; 
 import './App.css';
@@ -113,7 +116,8 @@ function App() {
           
 
           }else{
-            navigate(`/${key.toLowerCase()}`); // 👈 lowercase to match your routes
+            navigate(`/${key}`);
+             // 👈 lowercase to match your routes
           }
 
           }}
