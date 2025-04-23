@@ -89,7 +89,7 @@ export default App;*/
 import React from 'react';
 import Logout from './pages/Logout';
 import Login from './pages/Login';
-
+import Product from './pages/Product';
 import { Menu } from 'antd';
 import { Routes, Route,useNavigate } from 'react-router-dom'; 
 import './App.css';
@@ -148,6 +148,7 @@ function Content() {
         <Route path="/signout" element={<div>Signout Content</div>} />
         <Route path="/product" element={<div>Product Content</div>}/>
         <Route path="/login" element={<Login />} />
+        <Route path="/product" element={<Product} />
 
       </Routes>
     </div>
