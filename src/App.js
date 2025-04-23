@@ -89,9 +89,10 @@ export default App;*/
 import React from 'react';
 import Logout from './pages/Logout';
 import Login from './pages/Login';
-import Product from './pages/Product';
+import Product from './pages/Product'; 
+
 import { Menu } from 'antd';
-import { Routes, Route,useNavigate } from 'react-router-dom'; 
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import {
   DashboardOutlined,
@@ -102,36 +103,39 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
-
 function App() {
-  const navigate= useNavigate()
+  const navigate = useNavigate();
+
+  const logout = () => {
+    // Optional: localStorage.clear()
+    navigate("/login");
+  };
+
   return (
     <div>
       <div style={{ display: "flex", flexDirection: "row" }}>
         <Menu
-        onClick={({key})=>{
-          if(key === "singout"){
-            Logout();//logout
-            navigate("/login"); //redirect to login page
-          
-
-          }else{
-            navigate(`/${key}`);
-             // 👈 lowercase to match your routes
-          }
-
+          onClick={({ key }) => {
+            if (key === "signout") {
+              logout();
+            } else {
+              navigate(`/${key}`);
+            }
           }}
           items={[
-            { key: "HOME", label: "Home", icon: <HomeOutlined /> },
-            { key: "Dashboard", label: "Dashboard", icon: <DashboardOutlined /> },
-            { key: "Userlist", label: "User  List", icon: <UnorderedListOutlined /> },
+            { key: "home", label: "Home", icon: <HomeOutlined /> },
+            { key: "dashboard", label: "Dashboard", icon: <DashboardOutlined /> },
+            { key: "user-list", label: "User List", icon: <UnorderedListOutlined /> },
             { key: "profile", label: "Profile", icon: <UserOutlined /> },
-            { key: "Singout", label: "Signout", icon: <PoweroffOutlined /> },
-            { key: "product", label: "product", icon: <ProductOutlined /> },
+            { key: "signout", label: "Signout", icon: <PoweroffOutlined /> },
+           
+            { key: "product", label: "Product", icon: <ProductOutlined /> },
+
           ]}
-          ></Menu>
-        
-        <Content />
+        />
+        <div style={{ padding: "20px", flex: 1 }}>
+          <Content />
+        </div>
       </div>
     </div>
   );
@@ -139,19 +143,15 @@ function App() {
 
 function Content() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<div>Home Content</div>} />
-        <Route path="/dashboard" element={<div>Dashboard Content</div>} />
-        <Route path="/user-list" element={<div>User List Content</div>} />
-        <Route path="/profile" element={<div>Profile Content</div>} />
-        <Route path="/signout" element={<div>Signout Content</div>} />
-        <Route path="/product" element={<div>Product Content</div>}/>
-        <Route path="/login" element={<Login />} />
-        <Route path="/product" element={<Product} />
-
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/home" element={<div>Home Content</div>} />
+      <Route path="/dashboard" element={<div>Dashboard Content</div>} />
+      <Route path="/user-list" element={<div>User List Content</div>} />
+      <Route path="/profile" element={<div>Profile Content</div>} />
+      <Route path="/signout" element={<div>Signout Content</div>} />
+      <Route path="/product" element={<Product />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 
